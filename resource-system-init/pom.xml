@@ -119,7 +119,7 @@
 								<drop>true</drop>
 								<!-- optional, but useful for later inspection -->
 								<outputfilename>schema.ddl</outputfilename>
-								<persistenceunit>resourcebundles</persistenceunit>
+								<persistenceunit>resourcesystem</persistenceunit>
 							</componentProperties>
 						</configuration>
 					</plugin>
