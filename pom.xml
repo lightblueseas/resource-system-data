@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-persistence-parent</artifactId>
-		<version>2.2.0</version>
+		<version>2.10.0</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -42,11 +42,15 @@
 		<module>resource-system-entities</module>
 		<module>resource-system-business</module>
 		<module>resource-system-init</module>
+		<module>resource-system-domain</module>
+		<module>resource-system-rest-api</module>
+		<module>resource-system-rest-client</module>
+		<module>resource-system-rest-web</module>
 	</modules>
-	
+
 	<properties>
-	</properties>	
-	
+	</properties>
+
 	<dependencyManagement>
 
 		<dependencies>
@@ -63,6 +67,18 @@
 				<version>${project.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>resource-system-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>resource-system-rest-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
 
 	</dependencyManagement>
@@ -75,5 +91,5 @@
 		</dependency>
 
 	</dependencies>
-	
+
 </project>

@@ -2,18 +2,20 @@ package de.alpharogroup.resource.system.domain;
 
 import java.util.Date;
 
-import de.alpharogroup.db.domain.BaseBusinessObject;
+import de.alpharogroup.domain.BaseDomainObject;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
+/**
+ * The class {@link Resource}.
+ */
 @Getter
 @Setter
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
-public class Resource extends BaseBusinessObject<Integer> {
+public class Resource extends BaseDomainObject<Integer> {
 	/**
 	 * The serial Version UID
 	 */

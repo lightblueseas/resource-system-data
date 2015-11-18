@@ -19,9 +19,7 @@ import de.alpharogroup.resource.system.service.util.HqlStringCreator;
 @Service("resourcesService")
 public class ResourcesBusinessService extends AbstractBusinessService<Resources, Integer, ResourcesDao> implements ResourcesService {
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
