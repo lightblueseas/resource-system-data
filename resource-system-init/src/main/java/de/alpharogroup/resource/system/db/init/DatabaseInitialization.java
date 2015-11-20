@@ -15,7 +15,10 @@ public class DatabaseInitialization extends AbstractDatabaseInitialization {
 	}
 
 	protected List<File> getScriptFiles() {
-		return new ArrayList<>();
+		final File insertsDir = getInsertDir();
+		final List<File> scriptFiles = new ArrayList<>();
+		scriptFiles.add(new File(insertsDir, "insertDefaultImages.sql"));
+		return scriptFiles;
 	}
 
 }

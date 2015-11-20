@@ -18,6 +18,15 @@ import lombok.Getter;
  */
 public class ResourcesRestClient {
 
+	/** The Constant DEFAULT_HTTP_PORT. */
+	public static final int DEFAULT_HTTP_PORT = 8080;
+
+	/** The Constant BASE_URL_PREFIX. */
+	public static final String BASE_URL_PREFIX = "http://localhost";
+
+	/** The Constant DEFAULT_BASE_URL. */
+	public static final String DEFAULT_BASE_URL = BASE_URL_PREFIX + ":" + DEFAULT_HTTP_PORT;
+	
 
 	/**
 	 * Gets the resources resource.
@@ -27,7 +36,12 @@ public class ResourcesRestClient {
 	@Getter
 	private final ResourcesResource resourcesResource;
 
-
+	/**
+	 * Instantiates a new {@link ResourcesRestClient} with the default base url.
+	 */
+	public ResourcesRestClient() {
+		this(DEFAULT_BASE_URL);
+	}
 	/**
 	 * Instantiates a new {@link ResourcesRestClient}.
 	 *

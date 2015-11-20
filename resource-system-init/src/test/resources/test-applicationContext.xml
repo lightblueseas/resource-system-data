@@ -19,6 +19,8 @@
 	<context:component-scan base-package="de.alpharogroup.resource.system.mapper" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.service.api" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.service" />
+	<context:component-scan base-package="de.alpharogroup.resource.system.rest" />
+	<context:component-scan base-package="de.alpharogroup.resource.system.rest.api" />
 		
 	<bean id="propertyPlaceholder"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
