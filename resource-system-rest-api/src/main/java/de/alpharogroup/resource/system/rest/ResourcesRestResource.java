@@ -5,6 +5,7 @@ import javax.ws.rs.core.StreamingOutput;
 
 import de.alpharogroup.resource.system.domain.Resource;
 import de.alpharogroup.resource.system.rest.api.ResourcesResource;
+import de.alpharogroup.resource.system.rest.streaming.ResourceStreamingOutput;
 import de.alpharogroup.resource.system.service.api.ResourceService;
 import de.alpharogroup.service.rs.AbstractRestfulResource;
 

@@ -1,4 +1,4 @@
-package de.alpharogroup.resource.system.rest;
+package de.alpharogroup.resource.system.rest.streaming;
 
 import java.io.IOException;
 import java.io.OutputStream;
