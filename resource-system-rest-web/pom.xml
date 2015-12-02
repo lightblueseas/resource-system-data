@@ -147,6 +147,11 @@
 			<artifactId>tomcat-jdbc</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- RESOURCEBUNDLE-CORE DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>resourcebundle-inspector</artifactId>
+		</dependency>
 
 	</dependencies>
 

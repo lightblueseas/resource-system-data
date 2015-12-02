@@ -11,15 +11,15 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.springframework.web.context.ContextLoaderListener;
 
-import de.alpharogroup.file.delete.DeleteFileUtils;
+import de.alpharogroup.file.delete.DeleteFileExtensions;
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.jdbc.ConnectionsUtils;
+import de.alpharogroup.jdbc.ConnectionsExtensions;
 import de.alpharogroup.jetty9.runner.Jetty9Runner;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
-import de.alpharogroup.lang.PropertiesUtils;
+import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 /**
  * The Class ApplicationJettyRunner holds the main method that starts a jetty server with the rest services for the resource-bundle-data.
@@ -50,7 +50,7 @@ public class ApplicationJettyRunner
 		File logfile = new File(projectDirectory, "application.log");
 		if(logfile.exists()) {
 			try {
-				DeleteFileUtils.delete(logfile);
+				DeleteFileExtensions.delete(logfile);
 			} catch (IOException e) {
 				Logger.getRootLogger().error("logfile could not deleted.", e);
 			}
@@ -85,12 +85,12 @@ public class ApplicationJettyRunner
 	}
 
 	private static boolean existsPostgreSQLDatabase() throws IOException, ClassNotFoundException, SQLException {
-		Properties databaseProperties = PropertiesUtils.loadProperties("jdbc.properties");
+		Properties databaseProperties = PropertiesExtensions.loadProperties("jdbc.properties");
 		String hostname = databaseProperties.getProperty("jdbc.host");
 		String databaseName = databaseProperties.getProperty("jdbc.db.name");
 		String databaseUser = databaseProperties.getProperty("jdbc.user");
 		String databasePassword = databaseProperties.getProperty("jdbc.password");
-		boolean dbExists = ConnectionsUtils.existsPostgreSQLDatabase(hostname, databaseName, databaseUser, databasePassword);
+		boolean dbExists = ConnectionsExtensions.existsPostgreSQLDatabase(hostname, databaseName, databaseUser, databasePassword);
 		return dbExists;
 	}
 }
