@@ -60,6 +60,11 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
+		<!-- RESOURCEBUNDLE-CORE DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>resourcebundle-inspector</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
