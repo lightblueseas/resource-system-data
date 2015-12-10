@@ -10,9 +10,7 @@ import lombok.Getter;
 public class ResourcesRestClient extends AbstractRestClient {
 
 	/**
-	 * Gets the resources resource.
-	 *
-	 * @return the resources resource
+	 * The {@link ResourcesResource}.
 	 */
 	@Getter
 	private final ResourcesResource resourcesResource;
