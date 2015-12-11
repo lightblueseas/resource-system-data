@@ -5,7 +5,7 @@
     <artifactId>resource-system-data</artifactId>
     <version>3.1.0</version>
   </parent>
-  <artifactId>resource-system-rest-web</artifactId>  
+  <artifactId>resource-system-rest-web</artifactId>
 	<packaging>war</packaging>
 
 	<properties>
@@ -175,7 +175,7 @@
 			</resource>
 
 			<resource>
-				<filtering>false</filtering>
+				<filtering>true</filtering>
 				<directory>src/main/resources</directory>
 			</resource>
 
@@ -232,5 +232,5 @@
 		</plugins>
 
 	</build>
-  
+
 </project>

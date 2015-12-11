@@ -19,6 +19,7 @@ import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
+import de.alpharogroup.log.LoggerExtensions;
 import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 /**
@@ -33,33 +34,33 @@ public class ApplicationJettyRunner
 	 * @param args the arguments
 	 * @throws Exception the exception
 	 */
-	public static void main(String[] args) throws Exception
+	public static void main(final String[] args) throws Exception
 	{
-		if(!existsPostgreSQLDatabase()) {
-			Logger.getRootLogger().error("Database does not exists.");
-			System.exit(1);
-		}
-		int sessionTimeout = 1800;// set timeout to 30min(60sec * 30min=1800sec)...
-		String projectname = "resource-system-rest-web";
-		File projectDirectory = PathFinder.getProjectDirectory();
-		File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
+//		if(!existsPostgreSQLDatabase()) {
+//			Logger.getRootLogger().error("Database does not exists.");
+//			System.exit(1);
+//		}
+		final int sessionTimeout = 1800;// set timeout to 30min(60sec * 30min=1800sec)...
+		final String projectname = getProjectName();
+		final File projectDirectory = PathFinder.getProjectDirectory();
+		final File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
 			"webapp");
-		
-		String filterPath = "/*";
 
-		File logfile = new File(projectDirectory, "application.log");
+		final String filterPath = "/*";
+
+		final File logfile = new File(projectDirectory, "application.log");
 		if(logfile.exists()) {
 			try {
 				DeleteFileExtensions.delete(logfile);
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				Logger.getRootLogger().error("logfile could not deleted.", e);
 			}
 		}
-//		String absolutePathFromLogfile = logfile.getAbsolutePath();
 		// Add a file appender to the logger programatically
-//		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender(absolutePathFromLogfile));
+		LoggerExtensions.addFileAppender(Logger.getRootLogger(),
+				LoggerExtensions.newFileAppender(logfile.getAbsolutePath()));
 
-		ServletContextHandler servletContextHandler = ServletContextHandlerFactory.getNewServletContextHandler(
+		final ServletContextHandler servletContextHandler = ServletContextHandlerFactory.getNewServletContextHandler(
 			ServletContextHandlerConfiguration.builder()
 			.servletHolderConfiguration(
 				ServletHolderConfiguration.builder()
@@ -71,26 +72,47 @@ public class ApplicationJettyRunner
 			.maxInactiveInterval(sessionTimeout)
 			.filterPath(filterPath)
 			.initParameter("contextConfigLocation",
-				"classpath:resource-system-application-context.xml")			
+				"classpath:application-context.xml")
 			.build());
 		servletContextHandler.addEventListener(new ContextLoaderListener());
-		Jetty9RunConfiguration configuration = Jetty9RunConfiguration.builder()
+		final Jetty9RunConfiguration configuration = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(8080)
 			.httpsPort(8443)
 			.build();
-		Server server = new Server();
+		final Server server = new Server();
 		Jetty9Runner.runServletContextHandler(server, configuration);
 
 	}
 
-	private static boolean existsPostgreSQLDatabase() throws IOException, ClassNotFoundException, SQLException {
-		Properties databaseProperties = PropertiesExtensions.loadProperties("jdbc.properties");
-		String hostname = databaseProperties.getProperty("jdbc.host");
-		String databaseName = databaseProperties.getProperty("jdbc.db.name");
-		String databaseUser = databaseProperties.getProperty("jdbc.user");
-		String databasePassword = databaseProperties.getProperty("jdbc.password");
-		boolean dbExists = ConnectionsExtensions.existsPostgreSQLDatabase(hostname, databaseName, databaseUser, databasePassword);
+	/**
+	 * Gets the project name.
+	 *
+	 * @return the project name
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	protected static String getProjectName() throws IOException {
+		final Properties projectProperties = PropertiesExtensions.loadProperties("project.properties");
+		final String projectName = projectProperties.getProperty("artifactId");
+		return projectName;
+	}
+
+
+	/**
+	 * Checks if a postgresql database exists.
+	 *
+	 * @return true, if successful
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
+	protected static boolean existsPostgreSQLDatabase() throws IOException, ClassNotFoundException, SQLException {
+		final Properties databaseProperties = PropertiesExtensions.loadProperties("jdbc.properties");
+		final String hostname = databaseProperties.getProperty("jdbc.host");
+		final String databaseName = databaseProperties.getProperty("jdbc.db.name");
+		final String databaseUser = databaseProperties.getProperty("jdbc.user");
+		final String databasePassword = databaseProperties.getProperty("jdbc.password");
+		final boolean dbExists = ConnectionsExtensions.existsPostgreSQLDatabase(hostname, databaseName, databaseUser, databasePassword);
 		return dbExists;
 	}
 }
