@@ -1,11 +1,13 @@
 package de.alpharogroup.resource.system.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import de.alpharogroup.lang.ObjectExtensions;
 import de.alpharogroup.resource.system.daos.ResourcesDao;
 import de.alpharogroup.resource.system.domain.Resource;
 import de.alpharogroup.resource.system.entities.Resources;
@@ -23,7 +25,8 @@ import lombok.Setter;
 @Service("resourceDomainService")
 public class ResourceDomainService extends
 		AbstractDomainService<Integer, Resource, Resources, ResourcesDao, ResourcesMapper> implements ResourceService {
-	
+
+
 	/** The {@link ResourcesService}. */
 	@Autowired
 	@Getter
@@ -37,32 +40,68 @@ public class ResourceDomainService extends
 	 *            the new {@link ResourcesDao}.
 	 */
 	@Autowired
-	public void setResourcesDao(ResourcesDao resourcesDao){
+	public void setResourcesDao(final ResourcesDao resourcesDao){
 		setDao(resourcesDao);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Resource findByName(String filename) {
-		return getMapper().toDomainObject(resourcesService.findByName(filename));
+	public Resource create(final Resource domainObject)
+	{
+		final Resources resources = ObjectExtensions.copyQuietly(new Resources(), domainObject);
+		domainObject.setId(getDao().save(resources));
+		return domainObject;
+	}
+
+	/**
+	 * Sets the specific {@link ResourcesMapper}.
+	 *
+	 * @param resourcesMapper
+	 *            the new {@link ResourcesMapper}.
+	 */
+	@Autowired
+	public void setResourcesMapper(final ResourcesMapper resourcesMapper) {
+		setMapper(resourcesMapper);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Resource findByDescription(String description) {
-		return getMapper().toDomainObject(resourcesService.findByDescription(description));
+	public Resource findByName(final String filename) {
+		final Resources resources = resourcesService.findByName(filename);
+		final Resource resource = Resource.builder().build();
+		ObjectExtensions.copyQuietly(resource, resources);
+		return resource;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Resource> find(String description, String filename, String filesize, String contentType) {
-		return getMapper().toDomainObjects(resourcesService.find(description, filename, filesize, contentType));
+	public Resource findByDescription(final String description) {
+		final Resources resources = resourcesService.findByDescription(description);
+		final Resource resource = Resource.builder().build();
+		ObjectExtensions.copyQuietly(resource, resources);
+		return resource;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Resource> find(final String description, final String filename, final String filesize, final String contentType) {
+		final List<Resource> resourcesDomainObjects = new ArrayList<>();
+		final List<Resources> resourcesEntities = resourcesService.find(description, filename, filesize, contentType);
+		for (final Resources resources : resourcesEntities)
+		{
+			final Resource resource = Resource.builder().build();
+			ObjectExtensions.copyQuietly(resource, resources);
+			resourcesDomainObjects.add(resource);
+		}
+		return resourcesDomainObjects;
 	}
 
 	/**
@@ -70,7 +109,10 @@ public class ResourceDomainService extends
 	 */
 	@Override
 	public Resource getManPlaceholder() {
-		return getMapper().toDomainObject(resourcesService.getManPlaceholder());
+		final Resources resources = resourcesService.getManPlaceholder();
+		final Resource resource = Resource.builder().build();
+		ObjectExtensions.copyQuietly(resource, resources);
+		return resource;
 	}
 
 	/**
@@ -78,7 +120,10 @@ public class ResourceDomainService extends
 	 */
 	@Override
 	public Resource getWomanPlaceholder() {
-		return getMapper().toDomainObject(resourcesService.getWomanPlaceholder());
+		final Resources resources = resourcesService.getWomanPlaceholder();
+		final Resource resource = Resource.builder().build();
+		ObjectExtensions.copyQuietly(resource, resources);
+		return resource;
 	}
 
 	/**
@@ -86,7 +131,10 @@ public class ResourceDomainService extends
 	 */
 	@Override
 	public Resource getDefaultPlaceholder() {
-		return getMapper().toDomainObject(resourcesService.getDefaultPlaceholder());
+		final Resources resources = resourcesService.getDefaultPlaceholder();
+		final Resource resource = Resource.builder().build();
+		ObjectExtensions.copyQuietly(resource, resources);
+		return resource;
 	}
 
 }
