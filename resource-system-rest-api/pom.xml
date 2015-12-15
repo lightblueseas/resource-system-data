@@ -30,6 +30,16 @@
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>vintage-time</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>email-tails</artifactId>
+		</dependency>
+
 	</dependencies>
 
 </project>

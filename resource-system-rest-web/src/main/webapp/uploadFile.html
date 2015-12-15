@@ -1,0 +1,23 @@
+<html>
+<body>
+
+	<h1>Apache CXF : JAX-RS Restful web service</h1>
+	<h2>Upload a file with JAX-RS Restful web service</h2>
+	<div>
+		<form method="post"
+			action="http://localhost:8080/resource/upload/file"
+			enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>Select File:</td>
+					<td><input type="file" name="uploadedFile" size="100" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Upload File" /></td>
+					<td><input type="reset" value="Reset" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

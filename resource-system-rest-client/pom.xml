@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>de.alpharogroup</groupId>
-    <artifactId>resource-system-data</artifactId>
-    <version>3.1.0</version>
-  </parent>
+	<parent>
+		<groupId>de.alpharogroup</groupId>
+		<artifactId>resource-system-data</artifactId>
+		<version>3.1.0</version>
+	</parent>
 
-  <artifactId>resource-system-rest-client</artifactId>
+	<artifactId>resource-system-rest-client</artifactId>
 
 	<dependencies>
 
@@ -19,6 +20,36 @@
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>resource-system-rest-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>file-worker</artifactId>
+		</dependency>
+		<!-- Apache HTTP components for writing test client -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.1</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

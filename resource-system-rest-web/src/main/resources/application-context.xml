@@ -12,6 +12,6 @@
 						http://cxf.apache.org/schemas/jaxrs.xsd">
 
 	<import resource="classpath:web-application-context.xml" />
-	<import resource="classpath:data-h2-application-context.xml" />
+	<import resource="classpath:data-application-context.xml" />
 
 </beans>

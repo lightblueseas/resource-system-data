@@ -29,7 +29,7 @@ public class Resource extends BaseDomainObject<Integer> {
 	/** The checksum from this resource. */
 	private String checksum;
 	/** The binary data from this resource. */
-	private Byte[] content;
+	private byte[] content;
 	/** The content type from this resource. */
 	private String contentType;
 	/** The date when this resource is created in the database. */

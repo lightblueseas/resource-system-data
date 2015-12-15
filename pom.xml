@@ -50,7 +50,10 @@
 
 	<properties>
 		<!-- RESOURCEBUNDLE-CORE versions -->
-		<resourcebundle-inspector.version>2.6.0</resourcebundle-inspector.version>
+		<resourcebundle-inspector.version>2.7.0</resourcebundle-inspector.version>
+		<vintage-time.version>4.8.0</vintage-time.version>
+		<email-tails.version>4.8.0</email-tails.version>
+		<file-worker.version>4.8.0</file-worker.version>
 	</properties>
 
 	<dependencyManagement>
@@ -85,6 +88,24 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>resourcebundle-inspector</artifactId>
 				<version>${resourcebundle-inspector.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>vintage-time</artifactId>
+				<version>${vintage-time.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>email-tails</artifactId>
+				<version>${email-tails.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>file-worker</artifactId>
+				<version>${file-worker.version}</version>
 			</dependency>
 
 		</dependencies>

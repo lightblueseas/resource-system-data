@@ -20,7 +20,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Resources 
+public class Resources
 extends BaseEntity<Integer>
 implements Cloneable {
 
@@ -33,7 +33,7 @@ implements Cloneable {
 	private String checksum;
 	/** The binary data from this resource. */
 	@Column(name = "content", columnDefinition = "BYTEA")
-	private Byte[] content;
+	private byte[] content;
 	/** The content type from this resource. */
 	@Column(name = "contentType",length = 64)
 	private String contentType;
@@ -54,7 +54,7 @@ implements Cloneable {
 	/** The size from this resource. */
 	@Column(name = "filesize", length = 64)
 	private String filesize;
-	
+
 	public boolean isDeletedFlag() {
 		return getDeletedFlag();
 	}

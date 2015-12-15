@@ -3,15 +3,17 @@ package de.alpharogroup.resource.system.factories;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.apache.commons.lang.ArrayUtils;
+
 import de.alpharogroup.resource.system.entities.Resources;
 
 public final class ResourceSystemFactory implements Serializable {
-	
+
 	private ResourceSystemFactory() {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/** The Constant instance. */
@@ -35,15 +37,34 @@ public final class ResourceSystemFactory implements Serializable {
 	 * @param checksum the checksum
 	 * @return Resources A Resources object
 	 */
-    public Resources newResources(Integer id, String description, String filename,
-            String filesize, String filetype, Byte [] content, Date created, Boolean deletedFlag, String checksum ) {
-    	Resources resources = new Resources();
+    public Resources newResources(final Integer id, final String description, final String filename,
+            final String filesize, final String filetype, final Byte [] content, final Date created, final Boolean deletedFlag, final String checksum ) {
+
+        return newResources(id, description, filename, filesize, filetype, ArrayUtils.toPrimitive(content), created, deletedFlag, checksum);
+    }
+	/**
+	 * Factory method for create an Resources object.
+	 *
+	 * @param id the id
+	 * @param description the description
+	 * @param filename the filename
+	 * @param filesize the filesize
+	 * @param filetype the filetype
+	 * @param content the content
+	 * @param created the created
+	 * @param deletedFlag the deleted flag
+	 * @param checksum the checksum
+	 * @return Resources A Resources object
+	 */
+    public Resources newResources(final Integer id, final String description, final String filename,
+            final String filesize, final String filetype, final byte [] content, final Date created, final Boolean deletedFlag, final String checksum ) {
+    	final Resources resources = new Resources();
         resources.setDescription( description );
         resources.setFilename( filename );
         resources.setFilesize( filesize );
         resources.setContentType( filetype );
         resources.setId( id );
-        resources.setContent(content );
+        resources.setContent(content);
         resources.setCreated(created);
         resources.setChecksum(checksum);
         resources.setDeletedFlag(deletedFlag);
@@ -63,8 +84,8 @@ public final class ResourceSystemFactory implements Serializable {
      * @param checksum the checksum
      * @return Resources A Resources object
      */
-    public Resources newResources(String description, String filename,
-            String filesize, String filetype, Byte [] content, Date saved, Boolean deletedFlag, String checksum ) {
+    public Resources newResources(final String description, final String filename,
+            final String filesize, final String filetype, final Byte [] content, final Date saved, final Boolean deletedFlag, final String checksum ) {
         return newResources(null, description, filename, filesize, filetype, content, saved, deletedFlag, checksum);
     }
 }

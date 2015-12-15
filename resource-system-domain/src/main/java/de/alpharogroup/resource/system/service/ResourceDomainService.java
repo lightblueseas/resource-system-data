@@ -27,6 +27,7 @@ public class ResourceDomainService extends
 		AbstractDomainService<Integer, Resource, Resources, ResourcesDao, ResourcesMapper> implements ResourceService {
 
 
+
 	/** The {@link ResourcesService}. */
 	@Autowired
 	@Getter
@@ -53,6 +54,22 @@ public class ResourceDomainService extends
 		final Resources resources = ObjectExtensions.copyQuietly(new Resources(), domainObject);
 		domainObject.setId(getDao().save(resources));
 		return domainObject;
+	}
+
+	@Override
+	public Resource read(final Integer id)
+	{
+		final Resources resources = getDao().get(id);
+		final Resource resource = ObjectExtensions.copyQuietly(new Resource(), resources);
+		return resource;
+	}
+
+	@Override
+	public void update(final Resource domainObject)
+	{
+		final Resources resources = getDao().get(domainObject.getId());
+		ObjectExtensions.copyQuietly(resources, domainObject);
+		getDao().merge(resources);
 	}
 
 	/**
