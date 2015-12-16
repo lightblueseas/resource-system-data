@@ -88,4 +88,23 @@ public final class ResourceSystemFactory implements Serializable {
             final String filesize, final String filetype, final Byte [] content, final Date saved, final Boolean deletedFlag, final String checksum ) {
         return newResources(null, description, filename, filesize, filetype, content, saved, deletedFlag, checksum);
     }
+
+    /**
+     * Factory method for create an Resources object.
+     *
+     * @param description the description
+     * @param filename the filename
+     * @param filesize the filesize
+     * @param filetype the filetype
+     * @param content the content
+     * @param saved the saved
+     * @param deletedFlag the deleted flag
+     * @param checksum the checksum
+     * @return Resources A Resources object
+     */
+    public Resources newResources(final String description, final String filename,
+            final String filesize, final String filetype, final byte [] content, final Date saved, final Boolean deletedFlag, final String checksum ) {
+        return newResources(null, description, filename, filesize, filetype, content, saved, deletedFlag, checksum);
+    }
+
 }

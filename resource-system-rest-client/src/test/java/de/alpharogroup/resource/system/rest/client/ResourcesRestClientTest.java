@@ -19,7 +19,6 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -70,7 +69,8 @@ public class ResourcesRestClientTest {
 
 	@Test
 	public void testDownloadByName() throws FileNotFoundException, IOException {
-		final HttpClient client = HttpClientBuilder.create().build();
+		final HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+		final HttpClient client = httpClientBuilder.build();
 		final String url = "http://localhost:8080/resource/download/file/by/name/man_placeholder.jpg";
 		final HttpGet get = new HttpGet(url);
 		final HttpResponse response = client.execute(get);
@@ -110,7 +110,8 @@ public class ResourcesRestClientTest {
             httpPost.setEntity(httpEntity);
 
             // actual execution of http post request
-            closeableHttpClient = HttpClients.createDefault();
+            final HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+            closeableHttpClient = httpClientBuilder.build();
             httpResponse = closeableHttpClient.execute(httpPost);
 
             System.out.println("Response code/message: " + httpResponse.getStatusLine());
