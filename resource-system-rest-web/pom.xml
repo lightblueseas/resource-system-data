@@ -203,6 +203,23 @@
 						<warName>${war-name}</warName>
 					</configuration>
 				</plugin>
+				<!-- exclude this artifact from deploy -->
+				<plugin>
+					<inherited>false</inherited>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<inherited>false</inherited>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<configuration>
+						<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+					</configuration>
+				</plugin>
 
 			</plugins>
 
@@ -219,11 +236,12 @@
 			</plugin>
 			<!-- exclude this artifact from deploy -->
 			<plugin>
-				<inherited>false</inherited>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
 			</plugin>
 
 		</plugins>
