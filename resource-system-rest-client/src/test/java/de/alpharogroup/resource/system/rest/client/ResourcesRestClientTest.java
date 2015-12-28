@@ -67,7 +67,7 @@ public class ResourcesRestClientTest {
 	{
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void testDownloadByName() throws FileNotFoundException, IOException {
 		final HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
 		final HttpClient client = httpClientBuilder.build();
@@ -82,7 +82,7 @@ public class ResourcesRestClientTest {
 	}
 
 	@SuppressWarnings("deprecation")
-	@Test
+	@Test(enabled=false)
 	public void testUploadFile() throws FileNotFoundException, IOException {
 		 // local variables
         HttpPost httpPost = null;

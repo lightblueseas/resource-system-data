@@ -35,7 +35,7 @@ public interface ResourcesResource extends RestfulResource<Integer, Resource> {
     /**
      * Gets a {@link StreamingOutput} from the given id of a {@link Resource}.
      *
-     * @param name the name
+     * @param id the id
      * @return the resource
      */
     @GET
