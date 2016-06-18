@@ -39,7 +39,7 @@ public interface ResourcesResource extends RestfulResource<Integer, Resource> {
      * @return the resource
      */
     @GET
-    @Path("/download/file/by/id/{id}/{")
+    @Path("/download/file/by/id/{id}/")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response downloadById(@PathParam("id") Integer id);
 
