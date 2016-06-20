@@ -46,6 +46,18 @@ public class ResourceDomainService extends
 	}
 
 	/**
+	 * Sets the specific {@link ResourcesMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link ResourcesMapper}.
+	 */
+	@Autowired
+	public void setResourcesMapper(ResourcesMapper mapper) {
+		setMapper(mapper);
+	}
+
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -70,17 +82,6 @@ public class ResourceDomainService extends
 		final Resources resources = getDao().get(domainObject.getId());
 		ObjectExtensions.copyQuietly(resources, domainObject);
 		getDao().merge(resources);
-	}
-
-	/**
-	 * Sets the specific {@link ResourcesMapper}.
-	 *
-	 * @param resourcesMapper
-	 *            the new {@link ResourcesMapper}.
-	 */
-	@Autowired
-	public void setResourcesMapper(final ResourcesMapper resourcesMapper) {
-		setMapper(resourcesMapper);
 	}
 
 	/**
