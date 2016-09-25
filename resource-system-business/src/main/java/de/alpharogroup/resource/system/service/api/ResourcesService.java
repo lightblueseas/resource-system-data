@@ -2,7 +2,7 @@ package de.alpharogroup.resource.system.service.api;
 
 import java.util.List;
 
-import de.alpharogroup.db.service.jpa.BusinessService;
+import de.alpharogroup.db.service.api.BusinessService;
 import de.alpharogroup.resource.system.entities.Resources;
 
 public interface ResourcesService extends BusinessService<Resources, Integer> {
