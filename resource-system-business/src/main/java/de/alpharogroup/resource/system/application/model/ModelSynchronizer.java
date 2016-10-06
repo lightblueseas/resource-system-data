@@ -6,7 +6,7 @@ import de.alpharogroup.date.ConvertDateExtensions;
 import de.alpharogroup.file.checksum.Algorithm;
 import de.alpharogroup.file.checksum.ChecksumExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
-import de.alpharogroup.lang.ObjectExtensions;
+import de.alpharogroup.lang.object.CopyObjectExtensions;
 import de.alpharogroup.resource.system.entities.Resources;
 import de.alpharogroup.resource.system.factories.ResourceSystemFactory;
 
@@ -22,7 +22,7 @@ public class ModelSynchronizer {
 	 * @param withImage the with image
 	 */
 	public static void synchronize(final Resources toSynchronize, final Resources withImage) {
-		ObjectExtensions.copyQuietly(toSynchronize, withImage);
+		CopyObjectExtensions.copyQuietly(withImage, toSynchronize);
 	}
 
 	/**
