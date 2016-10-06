@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import de.alpharogroup.lang.ObjectExtensions;
+import de.alpharogroup.lang.object.CopyObjectExtensions;
 import de.alpharogroup.resource.system.application.model.ResourcesModel;
 import de.alpharogroup.resource.system.entities.Resources;
 
@@ -35,7 +35,7 @@ public class ModelConverter {
 	 * @return the resources model
 	 */
 	public static ResourcesModel toResourcesModel(final Resources resource) {
-		return ObjectExtensions.copyQuietly(new ResourcesModel(), resource);
+		return CopyObjectExtensions.copyQuietly(resource, new ResourcesModel());		
 	}
 
 	/**

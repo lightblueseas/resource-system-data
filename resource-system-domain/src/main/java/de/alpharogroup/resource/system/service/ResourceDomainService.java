@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.alpharogroup.lang.ObjectExtensions;
+import de.alpharogroup.lang.object.CopyObjectExtensions;
 import de.alpharogroup.resource.system.daos.ResourcesDao;
 import de.alpharogroup.resource.system.domain.Resource;
 import de.alpharogroup.resource.system.entities.Resources;
@@ -46,12 +46,24 @@ public class ResourceDomainService extends
 	}
 
 	/**
+	 * Sets the specific {@link ResourcesMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link ResourcesMapper}.
+	 */
+	@Autowired
+	public void setResourcesMapper(ResourcesMapper mapper) {
+		setMapper(mapper);
+	}
+
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Resource create(final Resource domainObject)
 	{
-		final Resources resources = ObjectExtensions.copyQuietly(new Resources(), domainObject);
+		final Resources resources = CopyObjectExtensions.copyQuietly(domainObject, new Resources());				
 		domainObject.setId(getDao().save(resources));
 		return domainObject;
 	}
@@ -60,27 +72,17 @@ public class ResourceDomainService extends
 	public Resource read(final Integer id)
 	{
 		final Resources resources = getDao().get(id);
-		final Resource resource = ObjectExtensions.copyQuietly(new Resource(), resources);
+		final Resource resource = CopyObjectExtensions.copyQuietly(resources, new Resource());
 		return resource;
 	}
 
 	@Override
-	public void update(final Resource domainObject)
+	public Resource update(final Resource domainObject)
 	{
-		final Resources resources = getDao().get(domainObject.getId());
-		ObjectExtensions.copyQuietly(resources, domainObject);
-		getDao().merge(resources);
-	}
-
-	/**
-	 * Sets the specific {@link ResourcesMapper}.
-	 *
-	 * @param resourcesMapper
-	 *            the new {@link ResourcesMapper}.
-	 */
-	@Autowired
-	public void setResourcesMapper(final ResourcesMapper resourcesMapper) {
-		setMapper(resourcesMapper);
+		Resources resources = getDao().get(domainObject.getId());
+		CopyObjectExtensions.copyQuietly(domainObject, resources);
+		resources = getDao().merge(resources);
+		return domainObject;
 	}
 
 	/**
@@ -90,7 +92,7 @@ public class ResourceDomainService extends
 	public Resource findByName(final String filename) {
 		final Resources resources = resourcesService.findByName(filename);
 		final Resource resource = Resource.builder().build();
-		ObjectExtensions.copyQuietly(resource, resources);
+		CopyObjectExtensions.copyQuietly(resources, resource);
 		return resource;
 	}
 
@@ -101,7 +103,7 @@ public class ResourceDomainService extends
 	public Resource findByDescription(final String description) {
 		final Resources resources = resourcesService.findByDescription(description);
 		final Resource resource = Resource.builder().build();
-		ObjectExtensions.copyQuietly(resource, resources);
+		CopyObjectExtensions.copyQuietly(resources, resource);
 		return resource;
 	}
 
@@ -115,7 +117,7 @@ public class ResourceDomainService extends
 		for (final Resources resources : resourcesEntities)
 		{
 			final Resource resource = Resource.builder().build();
-			ObjectExtensions.copyQuietly(resource, resources);
+			CopyObjectExtensions.copyQuietly(resources, resource);
 			resourcesDomainObjects.add(resource);
 		}
 		return resourcesDomainObjects;
@@ -128,7 +130,7 @@ public class ResourceDomainService extends
 	public Resource getManPlaceholder() {
 		final Resources resources = resourcesService.getManPlaceholder();
 		final Resource resource = Resource.builder().build();
-		ObjectExtensions.copyQuietly(resource, resources);
+		CopyObjectExtensions.copyQuietly(resources, resource);
 		return resource;
 	}
 
@@ -139,7 +141,7 @@ public class ResourceDomainService extends
 	public Resource getWomanPlaceholder() {
 		final Resources resources = resourcesService.getWomanPlaceholder();
 		final Resource resource = Resource.builder().build();
-		ObjectExtensions.copyQuietly(resource, resources);
+		CopyObjectExtensions.copyQuietly(resources, resource);
 		return resource;
 	}
 
@@ -150,7 +152,7 @@ public class ResourceDomainService extends
 	public Resource getDefaultPlaceholder() {
 		final Resources resources = resourcesService.getDefaultPlaceholder();
 		final Resource resource = Resource.builder().build();
-		ObjectExtensions.copyQuietly(resource, resources);
+		CopyObjectExtensions.copyQuietly(resources, resource);
 		return resource;
 	}
 

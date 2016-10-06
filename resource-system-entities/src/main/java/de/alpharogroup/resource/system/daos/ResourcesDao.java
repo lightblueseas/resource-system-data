@@ -14,14 +14,14 @@ import de.alpharogroup.resource.system.entities.Resources;
 
 @Repository("resourcesDao")
 public class ResourcesDao extends JpaEntityManagerDao<Resources, Integer>{
-
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** The entity manager. */
+	@PersistenceContext
 	@Getter
 	@Setter
-	@PersistenceContext 
 	private EntityManager entityManager;
 }
