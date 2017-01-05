@@ -19,7 +19,7 @@ public class ResourcesRestClient extends AbstractRestClient {
 	 * Instantiates a new {@link ResourcesRestClient} with the default base url.
 	 */
 	public ResourcesRestClient() {
-		this(DEFAULT_BASE_URL);
+		this(DEFAULT_BASE_HTTP_URL);
 	}
 	/**
 	 * Instantiates a new {@link ResourcesRestClient}.
