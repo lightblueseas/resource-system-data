@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Entity class {@link Resources} is keeping the information for the resources
+ * The entity class {@link Resources} is keeping the information for the resources
  * from users like logos, files, images etc.
  */
 @Entity
