@@ -24,15 +24,10 @@
  */
 package de.alpharogroup.resource.system.daos;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
 import de.alpharogroup.resource.system.entities.Resources;
-import lombok.Getter;
-import lombok.Setter;
 
 @Repository("resourcesDao")
 public class ResourcesDao extends JpaEntityManagerDao<Resources, Integer> {
@@ -40,10 +35,4 @@ public class ResourcesDao extends JpaEntityManagerDao<Resources, Integer> {
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/** The entity manager. */
-	@PersistenceContext
-	@Getter
-	@Setter
-	private EntityManager entityManager;
 }
