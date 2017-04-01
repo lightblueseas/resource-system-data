@@ -39,7 +39,7 @@ public class ResourcesBusinessServiceTest extends AbstractTestNGSpringContextTes
 	@Autowired
 	private ResourcesService resourcesService;
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testFindByName() {
 		Resources resources = resourcesService.findByName("man_placeholder.jpg");
 		AssertJUnit.assertEquals(resources.getChecksum(),
