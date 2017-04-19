@@ -72,9 +72,9 @@
 
 	<properties>
 		<!-- EXTENSIONS LIB versions -->
-		<vintage-time.version>4.10.0</vintage-time.version>
-		<email-tails.version>4.14.0</email-tails.version>
-		<file-worker.version>4.14.0</file-worker.version>
+		<vintage-time.version>4.11.0-SNAPSHOT</vintage-time.version>
+		<email-tails.version>4.15.0-SNAPSHOT</email-tails.version>
+		<file-worker.version>4.15.0-SNAPSHOT</file-worker.version>
 	</properties>
 
 	<dependencyManagement>
