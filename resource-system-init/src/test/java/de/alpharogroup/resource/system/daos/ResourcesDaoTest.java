@@ -34,12 +34,14 @@ import org.testng.annotations.Test;
 import de.alpharogroup.resource.system.entities.Resources;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
-public class ResourcesDaoTest extends AbstractTestNGSpringContextTests {
+public class ResourcesDaoTest extends AbstractTestNGSpringContextTests
+{
 	@Autowired
 	private ResourcesDao resourcesDao;
 
 	@Test
-	public void testFindAll() {
+	public void testFindAll()
+	{
 		List<Resources> all = resourcesDao.findAll();
 		System.out.println(all);
 	}

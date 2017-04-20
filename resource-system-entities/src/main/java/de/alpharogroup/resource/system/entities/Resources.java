@@ -36,15 +36,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The entity class {@link Resources} is keeping the information for the
- * resources from users like logos, files, images etc.
+ * The entity class {@link Resources} is keeping the information for the resources from users like
+ * logos, files, images etc.
  */
 @Entity
 @Table(name = "resources")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Resources extends BaseEntity<Integer> implements Cloneable {
+public class Resources extends BaseEntity<Integer> implements Cloneable
+{
 
 	/**
 	 * The serial Version UID
@@ -63,8 +64,8 @@ public class Resources extends BaseEntity<Integer> implements Cloneable {
 	@Column(name = "created")
 	private Date created;
 	/**
-	 * A flag that indicates that the resource is deleted from the user. Will be
-	 * deleted in batch process.
+	 * A flag that indicates that the resource is deleted from the user. Will be deleted in batch
+	 * process.
 	 */
 	@Column(name = "deleted_flag")
 	private Boolean deletedFlag;
@@ -78,7 +79,8 @@ public class Resources extends BaseEntity<Integer> implements Cloneable {
 	@Column(name = "filesize", length = 64)
 	private String filesize;
 
-	public boolean isDeletedFlag() {
+	public boolean isDeletedFlag()
+	{
 		return getDeletedFlag();
 	}
 

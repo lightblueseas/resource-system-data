@@ -36,7 +36,8 @@ import de.alpharogroup.check.Check;
 /**
  * The class {@link InputStreamStreamingOutput}.
  */
-public class InputStreamStreamingOutput implements StreamingOutput {
+public class InputStreamStreamingOutput implements StreamingOutput
+{
 
 	/** The input stream. */
 	private final InputStream inputStream;
@@ -47,7 +48,8 @@ public class InputStreamStreamingOutput implements StreamingOutput {
 	 * @param input
 	 *            the input
 	 */
-	public InputStreamStreamingOutput(InputStream input) {
+	public InputStreamStreamingOutput(InputStream input)
+	{
 		Check.get().notNull(input, "InputStream");
 		this.inputStream = input;
 	}
@@ -56,10 +58,12 @@ public class InputStreamStreamingOutput implements StreamingOutput {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void write(OutputStream output) throws IOException, WebApplicationException {
+	public void write(OutputStream output) throws IOException, WebApplicationException
+	{
 		int bytesRead;
 		byte[] buffer = new byte[4096];
-		while ((bytesRead = this.inputStream.read(buffer)) != -1) {
+		while ((bytesRead = this.inputStream.read(buffer)) != -1)
+		{
 			output.write(buffer, 0, bytesRead);
 		}
 	}

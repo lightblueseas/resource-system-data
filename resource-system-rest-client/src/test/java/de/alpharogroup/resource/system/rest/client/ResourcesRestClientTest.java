@@ -55,7 +55,8 @@ import de.alpharogroup.resource.system.rest.api.ResourcesResource;
 /**
  * The class {@link ResourcesRestClientTest}.
  */
-public class ResourcesRestClientTest {
+public class ResourcesRestClientTest
+{
 
 	/** The rest client. */
 	private ResourcesRestClient restClient;
@@ -70,8 +71,10 @@ public class ResourcesRestClientTest {
 	 *             the exception
 	 */
 	@BeforeMethod
-	public void setUpMethod() throws Exception {
-		if (restClient == null) {
+	public void setUpMethod() throws Exception
+	{
+		if (restClient == null)
+		{
 			restClient = new ResourcesRestClient();
 			resourcesResource = restClient.getResourcesResource();
 			AssertJUnit.assertNotNull(resourcesResource);
@@ -85,11 +88,13 @@ public class ResourcesRestClientTest {
 	 *             the exception
 	 */
 	@AfterMethod
-	public void tearDownMethod() throws Exception {
+	public void tearDownMethod() throws Exception
+	{
 	}
 
 	@Test(enabled = false)
-	public void testDownloadByName() throws FileNotFoundException, IOException {
+	public void testDownloadByName() throws FileNotFoundException, IOException
+	{
 		final HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
 		final HttpClient client = httpClientBuilder.build();
 		final String url = "http://localhost:8080/resource/download/file/by/name/man_placeholder.jpg";
@@ -104,7 +109,8 @@ public class ResourcesRestClientTest {
 
 	@SuppressWarnings("deprecation")
 	@Test(enabled = false)
-	public void testUploadFile() throws FileNotFoundException, IOException {
+	public void testUploadFile() throws FileNotFoundException, IOException
+	{
 		// local variables
 		HttpPost httpPost = null;
 		CloseableHttpClient closeableHttpClient = null;
@@ -118,7 +124,8 @@ public class ResourcesRestClientTest {
 		final File file = new File(".", "test-text.txt");
 		final String stringWrite = "foo bar";
 		WriteFileExtensions.writeStringToFile(file, stringWrite, null);
-		try {
+		try
+		{
 			// http post request header
 			httpPost = new HttpPost("http://localhost:8080/resource/upload/file");
 
@@ -145,18 +152,26 @@ public class ResourcesRestClientTest {
 			String strReadLine = bufferedReader.readLine();
 
 			// iterate to get the data and append in StringBuilder
-			while (strReadLine != null) {
+			while (strReadLine != null)
+			{
 				stringBuilder.append(strReadLine);
 				strReadLine = bufferedReader.readLine();
-				if (strReadLine != null) {
+				if (strReadLine != null)
+				{
 					stringBuilder.append("\n");
 				}
 			}
-		} catch (final UnsupportedEncodingException usee) {
+		}
+		catch (final UnsupportedEncodingException usee)
+		{
 			usee.printStackTrace();
-		} catch (final Exception ex) {
+		}
+		catch (final Exception ex)
+		{
 			ex.printStackTrace();
-		} finally {
+		}
+		finally
+		{
 			// shuts down, when work done
 			closeableHttpClient.getConnectionManager().closeExpiredConnections();
 		}

@@ -40,11 +40,11 @@ import de.alpharogroup.resource.system.domain.Resource;
 import de.alpharogroup.service.rs.RestfulResource;
 
 /**
- * The interface {@link ResourcesResource} provides methods for resolving
- * resources.
+ * The interface {@link ResourcesResource} provides methods for resolving resources.
  */
 @Path("/resource/")
-public interface ResourcesResource extends RestfulResource<Integer, Resource> {
+public interface ResourcesResource extends RestfulResource<Integer, Resource>
+{
 
 	/**
 	 * Gets a {@link StreamingOutput} from the given name of a {@link Resource}.

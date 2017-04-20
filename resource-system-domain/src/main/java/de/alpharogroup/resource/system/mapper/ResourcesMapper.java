@@ -34,6 +34,7 @@ import de.alpharogroup.resource.system.entities.Resources;
  * The class {@link ResourcesMapper}.
  */
 @Component
-public class ResourcesMapper extends AbstractEntityDOMapper<Resources, Resource> {
+public class ResourcesMapper extends AbstractEntityDOMapper<Resources, Resource>
+{
 
 }

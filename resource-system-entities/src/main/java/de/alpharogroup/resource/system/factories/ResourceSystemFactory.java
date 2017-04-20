@@ -31,7 +31,8 @@ import org.apache.commons.lang.ArrayUtils;
 
 import de.alpharogroup.resource.system.entities.Resources;
 
-public final class ResourceSystemFactory implements Serializable {
+public final class ResourceSystemFactory implements Serializable
+{
 
 	/**
 	 *
@@ -40,11 +41,14 @@ public final class ResourceSystemFactory implements Serializable {
 
 	/** The Constant instance. */
 	private static final ResourceSystemFactory instance = new ResourceSystemFactory();
-	public static ResourceSystemFactory getInstance() {
+
+	public static ResourceSystemFactory getInstance()
+	{
 		return instance;
 	}
 
-	private ResourceSystemFactory() {
+	private ResourceSystemFactory()
+	{
 	}
 
 	/**
@@ -71,8 +75,9 @@ public final class ResourceSystemFactory implements Serializable {
 	 * @return Resources A Resources object
 	 */
 	public Resources newResources(final Integer id, final String description, final String filename,
-			final String filesize, final String filetype, final byte[] content, final Date created,
-			final Boolean deletedFlag, final String checksum) {
+		final String filesize, final String filetype, final byte[] content, final Date created,
+		final Boolean deletedFlag, final String checksum)
+	{
 		final Resources resources = new Resources();
 		resources.setDescription(description);
 		resources.setFilename(filename);
@@ -110,11 +115,12 @@ public final class ResourceSystemFactory implements Serializable {
 	 * @return Resources A Resources object
 	 */
 	public Resources newResources(final Integer id, final String description, final String filename,
-			final String filesize, final String filetype, final Byte[] content, final Date created,
-			final Boolean deletedFlag, final String checksum) {
+		final String filesize, final String filetype, final Byte[] content, final Date created,
+		final Boolean deletedFlag, final String checksum)
+	{
 
-		return newResources(id, description, filename, filesize, filetype, ArrayUtils.toPrimitive(content), created,
-				deletedFlag, checksum);
+		return newResources(id, description, filename, filesize, filetype,
+			ArrayUtils.toPrimitive(content), created, deletedFlag, checksum);
 	}
 
 	/**
@@ -138,10 +144,12 @@ public final class ResourceSystemFactory implements Serializable {
 	 *            the checksum
 	 * @return Resources A Resources object
 	 */
-	public Resources newResources(final String description, final String filename, final String filesize,
-			final String filetype, final byte[] content, final Date saved, final Boolean deletedFlag,
-			final String checksum) {
-		return newResources(null, description, filename, filesize, filetype, content, saved, deletedFlag, checksum);
+	public Resources newResources(final String description, final String filename,
+		final String filesize, final String filetype, final byte[] content, final Date saved,
+		final Boolean deletedFlag, final String checksum)
+	{
+		return newResources(null, description, filename, filesize, filetype, content, saved,
+			deletedFlag, checksum);
 	}
 
 	/**
@@ -165,10 +173,12 @@ public final class ResourceSystemFactory implements Serializable {
 	 *            the checksum
 	 * @return Resources A Resources object
 	 */
-	public Resources newResources(final String description, final String filename, final String filesize,
-			final String filetype, final Byte[] content, final Date saved, final Boolean deletedFlag,
-			final String checksum) {
-		return newResources(null, description, filename, filesize, filetype, content, saved, deletedFlag, checksum);
+	public Resources newResources(final String description, final String filename,
+		final String filesize, final String filetype, final Byte[] content, final Date saved,
+		final Boolean deletedFlag, final String checksum)
+	{
+		return newResources(null, description, filename, filesize, filetype, content, saved,
+			deletedFlag, checksum);
 	}
 
 }

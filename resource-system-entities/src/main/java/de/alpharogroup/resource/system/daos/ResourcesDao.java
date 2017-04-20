@@ -30,7 +30,8 @@ import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
 import de.alpharogroup.resource.system.entities.Resources;
 
 @Repository("resourcesDao")
-public class ResourcesDao extends JpaEntityManagerDao<Resources, Integer> {
+public class ResourcesDao extends JpaEntityManagerDao<Resources, Integer>
+{
 	/**
 	 * The serialVersionUID.
 	 */

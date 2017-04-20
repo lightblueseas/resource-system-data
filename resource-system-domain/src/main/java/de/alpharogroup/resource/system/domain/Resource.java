@@ -45,7 +45,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Resource extends BaseDomainObject<Integer> {
+public class Resource extends BaseDomainObject<Integer>
+{
 	/**
 	 * The serial Version UID
 	 */
@@ -59,8 +60,8 @@ public class Resource extends BaseDomainObject<Integer> {
 	/** The date when this resource is created in the database. */
 	private Date created;
 	/**
-	 * A flag that indicates that the resource is deleted from the user. Will be
-	 * deleted in batch process.
+	 * A flag that indicates that the resource is deleted from the user. Will be deleted in batch
+	 * process.
 	 */
 	private Boolean deletedFlag;
 	/** A description for this resource. */

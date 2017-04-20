@@ -32,7 +32,8 @@ import de.alpharogroup.service.domain.DomainService;
 /**
  * The interface {@link ResourceService}.
  */
-public interface ResourceService extends DomainService<Integer, Resource> {
+public interface ResourceService extends DomainService<Integer, Resource>
+{
 
 	/**
 	 * Finds a list of {@link Resource} objects from the given arguments.

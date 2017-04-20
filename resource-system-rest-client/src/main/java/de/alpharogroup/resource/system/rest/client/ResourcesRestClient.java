@@ -31,7 +31,8 @@ import lombok.Getter;
 /**
  * The class {@link ResourcesRestClient}.
  */
-public class ResourcesRestClient extends AbstractRestClient {
+public class ResourcesRestClient extends AbstractRestClient
+{
 
 	/**
 	 * The {@link ResourcesResource}.
@@ -42,7 +43,8 @@ public class ResourcesRestClient extends AbstractRestClient {
 	/**
 	 * Instantiates a new {@link ResourcesRestClient} with the default base url.
 	 */
-	public ResourcesRestClient() {
+	public ResourcesRestClient()
+	{
 		this(DEFAULT_BASE_HTTP_URL);
 	}
 
@@ -52,7 +54,8 @@ public class ResourcesRestClient extends AbstractRestClient {
 	 * @param baseUrl
 	 *            the base url
 	 */
-	public ResourcesRestClient(final String baseUrl) {
+	public ResourcesRestClient(final String baseUrl)
+	{
 		super(baseUrl);
 		resourcesResource = newResource(ResourcesResource.class);
 	}

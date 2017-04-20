@@ -43,7 +43,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class ResourcesModel implements Serializable {
+public class ResourcesModel implements Serializable
+{
 
 	/**
 	 * The serialVersionUID.
@@ -75,8 +76,8 @@ public class ResourcesModel implements Serializable {
 	private Date created;
 
 	/**
-	 * A flag that indicates that the resource is deleted from the user. Will be
-	 * deleted in batch process.
+	 * A flag that indicates that the resource is deleted from the user. Will be deleted in batch
+	 * process.
 	 */
 	private Boolean deletedFlag;
 
@@ -85,7 +86,8 @@ public class ResourcesModel implements Serializable {
 	 *
 	 * @return A Date object (this.deletedFlag)
 	 */
-	public Boolean isDeletedFlag() {
+	public Boolean isDeletedFlag()
+	{
 		return deletedFlag;
 	}
 

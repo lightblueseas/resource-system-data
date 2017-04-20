@@ -37,7 +37,8 @@ import de.alpharogroup.resource.system.factories.ResourceSystemFactory;
 /**
  * The class {@link ModelSynchronizer}.
  */
-public class ModelSynchronizer {
+public class ModelSynchronizer
+{
 
 	/**
 	 * Convert the given FileModel object to an Resources object.
@@ -46,24 +47,27 @@ public class ModelSynchronizer {
 	 *            the upload file model
 	 * @return the resources
 	 */
-	public static Resources convert(final ResourcesModel resourcesModel) {
-		final Resources resources = ResourceSystemFactory.getInstance().newResources(resourcesModel.getDescription(),
-				resourcesModel.getFilename(), resourcesModel.getFilesize(), resourcesModel.getContentType(),
-				resourcesModel.getContent(), resourcesModel.getCreated(), resourcesModel.isDeletedFlag(),
-				resourcesModel.getChecksum());
+	public static Resources convert(final ResourcesModel resourcesModel)
+	{
+		final Resources resources = ResourceSystemFactory.getInstance().newResources(
+			resourcesModel.getDescription(), resourcesModel.getFilename(),
+			resourcesModel.getFilesize(), resourcesModel.getContentType(),
+			resourcesModel.getContent(), resourcesModel.getCreated(),
+			resourcesModel.isDeletedFlag(), resourcesModel.getChecksum());
 		return resources;
 	}
 
 	/**
-	 * Equalizes the given image with the resourcesModel object so the
-	 * resourcesModel object sets the values from resources object.
+	 * Equalizes the given image with the resourcesModel object so the resourcesModel object sets
+	 * the values from resources object.
 	 *
 	 * @param resources
 	 *            the resources
 	 * @param resourcesModel
 	 *            the file model
 	 */
-	public static void equalise(final Resources resources, final ResourcesModel resourcesModel) {
+	public static void equalise(final Resources resources, final ResourcesModel resourcesModel)
+	{
 		resources.setChecksum(resourcesModel.getChecksum());
 		resources.setContent(resourcesModel.getContent());
 		resources.setContentType(resourcesModel.getContentType());
@@ -82,7 +86,8 @@ public class ModelSynchronizer {
 	 * @param withImage
 	 *            the with image
 	 */
-	public static void synchronize(final Resources toSynchronize, final Resources withImage) {
+	public static void synchronize(final Resources toSynchronize, final Resources withImage)
+	{
 		CopyObjectExtensions.copyQuietly(withImage, toSynchronize);
 	}
 
@@ -97,7 +102,9 @@ public class ModelSynchronizer {
 	 *            the description
 	 * @return the ResourceModel
 	 */
-	public static ResourcesModel toResourceModel(final File file, final String contentType, final String description) {
+	public static ResourcesModel toResourceModel(final File file, final String contentType,
+		final String description)
+	{
 		final ResourcesModel resourcesModel = new ResourcesModel();
 		resourcesModel.setContent(ReadFileExtensions.toByteArray(file));
 		resourcesModel.setContentType(contentType);

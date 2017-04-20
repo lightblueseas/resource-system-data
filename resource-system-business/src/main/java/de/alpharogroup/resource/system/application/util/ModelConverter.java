@@ -36,29 +36,30 @@ import de.alpharogroup.resource.system.entities.Resources;
 /**
  * The class {@link ModelConverter}.
  */
-public class ModelConverter {
+public class ModelConverter
+{
 
 	/**
-	 * Converts the given array of {@link Byte} objects to a primitive
-	 * {@code byte} array.
+	 * Converts the given array of {@link Byte} objects to a primitive {@code byte} array.
 	 *
 	 * @param array
 	 *            the array
 	 * @return the primitive {@code byte} array
 	 */
-	public static byte[] toByteArray(final Byte[] array) {
+	public static byte[] toByteArray(final Byte[] array)
+	{
 		return ArrayUtils.toPrimitive(array);
 	}
 
 	/**
-	 * Converts the given primitive {@code byte} array to an array of
-	 * {@link Byte} objects.
+	 * Converts the given primitive {@code byte} array to an array of {@link Byte} objects.
 	 *
 	 * @param array
 	 *            the array
 	 * @return the array of {@link Byte} objects.
 	 */
-	public static Byte[] toObject(final byte[] array) {
+	public static Byte[] toObject(final byte[] array)
+	{
 		return ArrayUtils.toObject(array);
 	}
 
@@ -69,9 +70,11 @@ public class ModelConverter {
 	 *            the resources
 	 * @return the list
 	 */
-	public static List<ResourcesModel> toResourcesModel(final List<Resources> resources) {
+	public static List<ResourcesModel> toResourcesModel(final List<Resources> resources)
+	{
 		final List<ResourcesModel> rml = new ArrayList<ResourcesModel>();
-		for (final Resources resource : resources) {
+		for (final Resources resource : resources)
+		{
 			rml.add(toResourcesModel(resource));
 		}
 		return rml;
@@ -84,7 +87,8 @@ public class ModelConverter {
 	 *            the resource
 	 * @return the resources model
 	 */
-	public static ResourcesModel toResourcesModel(final Resources resource) {
+	public static ResourcesModel toResourcesModel(final Resources resource)
+	{
 		return CopyObjectExtensions.copyQuietly(resource, new ResourcesModel());
 	}
 }

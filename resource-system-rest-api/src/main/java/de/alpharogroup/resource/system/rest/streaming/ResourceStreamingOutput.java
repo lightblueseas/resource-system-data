@@ -36,7 +36,8 @@ import de.alpharogroup.resource.system.domain.Resource;
 /**
  * The class {@link ResourceStreamingOutput}.
  */
-public class ResourceStreamingOutput implements StreamingOutput {
+public class ResourceStreamingOutput implements StreamingOutput
+{
 
 	/** The resource. */
 	private final Resource resource;
@@ -47,7 +48,8 @@ public class ResourceStreamingOutput implements StreamingOutput {
 	 * @param resource
 	 *            the resource
 	 */
-	public ResourceStreamingOutput(final Resource resource) {
+	public ResourceStreamingOutput(final Resource resource)
+	{
 		Check.get().notNull(resource, "resource");
 		this.resource = resource;
 	}
@@ -56,7 +58,8 @@ public class ResourceStreamingOutput implements StreamingOutput {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void write(final OutputStream output) throws IOException, WebApplicationException {
+	public void write(final OutputStream output) throws IOException, WebApplicationException
+	{
 		output.write(this.resource.getContent());
 		output.flush();
 	}

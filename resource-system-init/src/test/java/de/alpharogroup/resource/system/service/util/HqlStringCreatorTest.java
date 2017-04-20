@@ -27,10 +27,12 @@ package de.alpharogroup.resource.system.service.util;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-public class HqlStringCreatorTest {
+public class HqlStringCreatorTest
+{
 
 	@Test
-	public void testForResources() {
+	public void testForResources()
+	{
 		String actual;
 		String expected;
 

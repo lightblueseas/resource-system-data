@@ -26,7 +26,8 @@ package de.alpharogroup.resource.system.service.locator;
 
 import de.alpharogroup.resource.system.service.api.ResourcesService;
 
-public interface ServiceLocator {
+public interface ServiceLocator
+{
 
 	/**
 	 * Gets the resources service.

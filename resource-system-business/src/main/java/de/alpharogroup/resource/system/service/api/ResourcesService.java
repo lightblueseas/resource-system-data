@@ -29,7 +29,8 @@ import java.util.List;
 import de.alpharogroup.db.service.api.BusinessService;
 import de.alpharogroup.resource.system.entities.Resources;
 
-public interface ResourcesService extends BusinessService<Resources, Integer> {
+public interface ResourcesService extends BusinessService<Resources, Integer>
+{
 	List<Resources> find(String description, String filename, String filesize, String contentType);
 
 	Resources findByDescription(String description);

@@ -48,11 +48,15 @@ import de.alpharogroup.resource.system.service.api.ResourceService;
 import de.alpharogroup.service.rs.AbstractRestfulResource;
 
 /**
- * The class {@link ResourcesRestResource} provides an implementation of the
- * inteface {@link ResourcesResource}.
+ * The class {@link ResourcesRestResource} provides an implementation of the inteface
+ * {@link ResourcesResource}.
  */
-public class ResourcesRestResource extends AbstractRestfulResource<Integer, Resource, ResourceService>
-		implements ResourcesResource {
+public class ResourcesRestResource
+	extends
+		AbstractRestfulResource<Integer, Resource, ResourceService>
+	implements
+		ResourcesResource
+{
 
 	/** The logger constant. */
 	private static final Logger LOG = Logger.getLogger(ResourcesRestResource.class.getName());
@@ -61,7 +65,8 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Response download(final String name) {
+	public Response download(final String name)
+	{
 		final Resource resource = getDomainService().findByName(name);
 		return Response.ok(getResourceStreamingOutput(resource)).build();
 	}
@@ -70,7 +75,8 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Response downloadById(final Integer id) {
+	public Response downloadById(final Integer id)
+	{
 		final Resource resource = getDomainService().read(id);
 		return Response.ok(getResourceStreamingOutput(resource)).build();
 	}
@@ -84,12 +90,17 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 	 *            the element
 	 * @return the element or null if not found.
 	 */
-	private String getElementFromContentDisposition(final Attachment attachment, final String element) {
+	private String getElementFromContentDisposition(final Attachment attachment,
+		final String element)
+	{
 		final MultivaluedMap<String, String> multivaluedMap = attachment.getHeaders();
-		final String[] contentDispositions = multivaluedMap.getFirst("Content-Disposition").split(";");
-		for (final String contentDisposition : contentDispositions) {
+		final String[] contentDispositions = multivaluedMap.getFirst("Content-Disposition")
+			.split(";");
+		for (final String contentDisposition : contentDispositions)
+		{
 
-			if ((contentDisposition.trim().startsWith(element))) {
+			if ((contentDisposition.trim().startsWith(element)))
+			{
 				final String[] keyValue = contentDisposition.split("=");
 				final String value = keyValue[1].trim();
 				return value;
@@ -105,9 +116,11 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 	 *            the attachment
 	 * @return the file name
 	 */
-	private String getFileName(final Attachment attachment) {
+	private String getFileName(final Attachment attachment)
+	{
 		final String element = getElementFromContentDisposition(attachment, "filename");
-		if (element != null) {
+		if (element != null)
+		{
 			final String filename = element.replaceAll("\"", "");
 			return filename;
 		}
@@ -115,14 +128,14 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 	}
 
 	/**
-	 * Gets a {@link ResourceStreamingOutput} from the given {@link Resource}
-	 * object.
+	 * Gets a {@link ResourceStreamingOutput} from the given {@link Resource} object.
 	 *
 	 * @param resource
 	 *            the {@link Resource} object
 	 * @return the {@link ResourceStreamingOutput} object.
 	 */
-	private StreamingOutput getResourceStreamingOutput(final Resource resource) {
+	private StreamingOutput getResourceStreamingOutput(final Resource resource)
+	{
 		return new ResourceStreamingOutput(resource);
 	}
 
@@ -130,10 +143,12 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Response upload(final Attachment attachment) {
+	public Response upload(final Attachment attachment)
+	{
 		final DataHandler dataHandler = attachment.getDataHandler();
 		InputStream inputStream = null;
-		try {
+		try
+		{
 			// get filename
 			final String fileName = getFileName(attachment);
 			final String description = getElementFromContentDisposition(attachment, "description");
@@ -141,18 +156,26 @@ public class ResourcesRestResource extends AbstractRestfulResource<Integer, Reso
 			final String contentType = Mimetypes.getExtension(fileName);
 			final byte[] byteArray = IOUtils.toByteArray(inputStream);
 			final Resource resource = Resource.builder().filename(fileName).description(description)
-					.contentType(contentType).content(byteArray).filesize(byteArray.length + "")
-					.created(CreateDateExtensions.now())
-					.checksum(ChecksumExtensions.getChecksumQuietly(byteArray, Algorithm.SHA_256.getAlgorithm()))
-					.deletedFlag(false).build();
+				.contentType(contentType).content(byteArray).filesize(byteArray.length + "")
+				.created(CreateDateExtensions.now()).checksum(ChecksumExtensions
+					.getChecksumQuietly(byteArray, Algorithm.SHA_256.getAlgorithm()))
+				.deletedFlag(false).build();
 			getDomainService().create(resource);
-		} catch (final Exception e) {
+		}
+		catch (final Exception e)
+		{
 			LOG.error("Error occured by upload attachment.", e);
-		} finally {
-			if (inputStream != null) {
-				try {
+		}
+		finally
+		{
+			if (inputStream != null)
+			{
+				try
+				{
 					StreamExtensions.close(inputStream);
-				} catch (final IOException e) {
+				}
+				catch (final IOException e)
+				{
 					LOG.error("Error occured by close inputstream.", e);
 				}
 			}
