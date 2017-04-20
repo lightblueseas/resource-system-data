@@ -33,7 +33,7 @@ import org.testng.annotations.Test;
 
 import de.alpharogroup.resource.system.entities.Resources;
 
-@ContextConfiguration(locations = "classpath:test-applicationContext.xml")
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class ResourcesDaoTest extends AbstractTestNGSpringContextTests
 {
 	@Autowired
@@ -42,7 +42,7 @@ public class ResourcesDaoTest extends AbstractTestNGSpringContextTests
 	@Test
 	public void testFindAll()
 	{
-		List<Resources> all = resourcesDao.findAll();
+		final List<Resources> all = resourcesDao.findAll();
 		System.out.println(all);
 	}
 
