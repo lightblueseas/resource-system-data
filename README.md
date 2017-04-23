@@ -6,7 +6,7 @@ The project holds backend data for all kind of resources like images and file ma
 
 # ERD-Diagramm
 
-The erd-diagramm for this database looks as follows: ![here](https://github.com/lightblueseas/resource-system-data/blob/develop/resource-system-init/src/main/resources/erd/erd-diagramm-resourcesystem.png)
+The erd-diagramm for this database looks as follows: ![erd-diagramm](https://github.com/lightblueseas/resource-system-data/blob/develop/resource-system-init/src/main/resources/erd/erd-diagramm-resourcesystem.png)
 
 This erd-diagramm was created with the awesome [SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/)
 
