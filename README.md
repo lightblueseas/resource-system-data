@@ -1,4 +1,4 @@
-# resource-system-data
+# Overview
 
 Parent project that holds module projects for the persistence of resource system data.
 
