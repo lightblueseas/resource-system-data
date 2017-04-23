@@ -8,6 +8,8 @@ The project holds backend data for all kind of resources like images and file ma
 
 The erd-diagramm for this database looks as follows: ![here](https://github.com/lightblueseas/resource-system-data/blob/develop/resource-system-init/src/main/resources/erd/erd-diagramm-resourcesystem.png)
 
+This erd-diagramm was created with the awesome [SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/)
+
 ## License
 
 The source code comes under the liberal MIT License, making resource-system-data great for all types of applications that handles resources.
