@@ -33,7 +33,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.resource.system.entities.Resources;
 import de.alpharogroup.resource.system.service.api.ResourcesService;
 
-@ContextConfiguration(locations = "classpath:test-applicationContext.xml")
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class ResourcesBusinessServiceTest extends AbstractTestNGSpringContextTests
 {
 
@@ -43,7 +43,7 @@ public class ResourcesBusinessServiceTest extends AbstractTestNGSpringContextTes
 	@Test(enabled = false)
 	public void testFindByName()
 	{
-		Resources resources = resourcesService.findByName("man_placeholder.jpg");
+		final Resources resources = resourcesService.findByName("man_placeholder.jpg");
 		AssertJUnit.assertEquals(resources.getChecksum(),
 			"ae7768338af5ac9036c06c2e414509ae8fc465a216e08cae133299cf5291cc39");
 	}

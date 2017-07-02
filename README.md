@@ -1,14 +1,20 @@
-# resource-system-data
+# Overview
 
 Parent project that holds module projects for the persistence of resource system data.
 
 The project holds backend data for all kind of resources like images and file management.
 
+# ERD-Diagramm
+
+The erd-diagramm for this database looks as follows: ![erd-diagramm](https://github.com/lightblueseas/resource-system-data/blob/develop/resource-system-init/src/main/resources/erd/erd-diagramm-resourcesystem.png)
+
+This erd-diagramm was created with the awesome [SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/)
+
 ## License
 
 The source code comes under the liberal MIT License, making resource-system-data great for all types of applications that handles resources.
 
-# Build status and latest maven version
+# Build status
 [![Build Status](https://travis-ci.org/lightblueseas/resource-system-data.svg?branch=master)](https://travis-ci.org/lightblueseas/resource-system-data)
 
 ## Maven Central
@@ -27,7 +33,7 @@ You can first define the version properties:
 	<properties>
 			...
 		<!-- resource-system-data version -->
-		<resource-system-data.version>3.11.0</resource-system-data.version>
+		<resource-system-data.version>3.12.0</resource-system-data.version>
 		<resource-system-business.version>${resource-system-data.version}</resource-system-business.version>
 		<resource-system-domain.version>${resource-system-data.version}</resource-system-domain.version>
 		<resource-system-entities.version>${resource-system-data.version}</resource-system-entities.version>
@@ -121,6 +127,11 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 			</dependency>
 			...
 		</dependencies>
+		
+		 
+## Open Issues
+[![Open Issues](https://img.shields.io/github/issues/astrapi69/resource-system-data.svg?style=flat)](https://github.com/astrapi69/resource-system-data/issues) 
+
 
 ## Want to Help and improve it? ###
 

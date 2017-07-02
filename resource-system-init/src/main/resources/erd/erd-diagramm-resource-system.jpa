@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="de.alpharogroup.resource.system.entities" v="1.5.4" xs="false" id="_1492944138724100" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:mapped-superclass xre="false" access="FIELD" sm="false" abs="true" class="BaseEntity" visibile="true" minimized="false" rootElement="_1492944138724100" id="_1492944138744110">
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <jpa:id attribute-type="PK" visibile="true" name="id" id="_1492944138744111">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="id"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:entity xre="false" sm="false" abs="false" class="Resources" superclassId="_1492944138744110" visibile="true" minimized="false" rootElement="_1492944138724100" id="_1492944138744101">
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="checksum" id="_1492944138744102">
+                <jpa:column name="checksum" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="byte[]" visibile="true" name="content" id="_1492944138744103">
+                <jpa:column name="content" unique="false" nullable="true" insertable="true" updatable="true" column-definition="BYTEA"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="contentType" id="_1492944138744104">
+                <jpa:column name="contentType" unique="false" nullable="true" insertable="true" updatable="true" length="64"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="created" id="_1492944138744105">
+                <jpa:column name="created" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" visibile="true" name="deletedFlag" id="_1492944138744106">
+                <jpa:column name="deleted_flag" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="description" id="_1492944138744107">
+                <jpa:column name="description" unique="false" nullable="true" insertable="true" updatable="true" length="1024"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="filename" id="_1492944138744108">
+                <jpa:column name="filename" unique="false" nullable="true" insertable="true" updatable="true" length="1024"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="filesize" id="_1492944138744109">
+                <jpa:column name="filesize" unique="false" nullable="true" insertable="true" updatable="true" length="64"/>
+            </basic>
+        </jpa:attributes>
+        <jpa:table name="resources"/>
+    </jpa:entity>
+    <jpa:diagram>
+        <plane elementRef="_1492944138724100">
+            <shape elementRef="_1492944138744101">
+                <Bounds x="268.0" y="150.0" width="170.0" height="195.0"/>
+            </shape>
+            <shape elementRef="_1492944138744110">
+                <Bounds x="267.0" y="43.0" width="172.0" height="54.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
