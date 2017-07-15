@@ -33,7 +33,7 @@ You can first define the version properties:
 	<properties>
 			...
 		<!-- resource-system-data version -->
-		<resource-system-data.version>3.12.0</resource-system-data.version>
+		<resource-system-data.version>3.12.2</resource-system-data.version>
 		<resource-system-business.version>${resource-system-data.version}</resource-system-business.version>
 		<resource-system-domain.version>${resource-system-data.version}</resource-system-domain.version>
 		<resource-system-entities.version>${resource-system-data.version}</resource-system-entities.version>
