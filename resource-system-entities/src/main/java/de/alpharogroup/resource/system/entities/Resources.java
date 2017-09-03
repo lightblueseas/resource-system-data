@@ -75,6 +75,9 @@ public class Resources extends BaseEntity<Integer> implements Cloneable
 	/** The filename from this resource. */
 	@Column(name = "filename", length = 1024)
 	private String filename;
+	/** The filepath from this resource. */
+	@Column(name = "filepath", length = 4096)
+	private String filepath;
 	/** The size from this resource. */
 	@Column(name = "filesize", length = 64)
 	private String filesize;

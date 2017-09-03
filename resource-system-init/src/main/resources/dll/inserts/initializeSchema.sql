@@ -8,6 +8,7 @@
         deleted_flag bool,
         description varchar(1024),
         filename varchar(1024),
+        filepath varchar(4096),
         filesize varchar(64),
         primary key (id)
     );
