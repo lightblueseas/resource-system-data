@@ -32,7 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.alpharogroup.collections.ListExtensions;
+import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.db.service.jpa.AbstractBusinessService;
 import de.alpharogroup.resource.system.daos.ResourcesDao;
 import de.alpharogroup.resource.system.entities.Resources;
@@ -51,11 +51,12 @@ public class ResourcesBusinessService
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Resources> find(String description, String filename, String filesize,
 		String contentType)
 	{
-		String hqlString = HqlStringCreator.forResources(description, filename, filesize,
+		final String hqlString = HqlStringCreator.forResources(description, filename, filesize,
 			contentType);
 		final Query query = getQuery(hqlString);
 		if (description != null && !description.isEmpty())
@@ -78,18 +79,21 @@ public class ResourcesBusinessService
 		return Resources;
 	}
 
+	@Override
 	public Resources findByDescription(String description)
 	{
 		final List<Resources> Resources = find(description, null, null, null);
 		return ListExtensions.getFirst(Resources);
 	}
 
+	@Override
 	public Resources findByName(String filename)
 	{
 		final List<Resources> Resources = find(null, filename, null, null);
 		return ListExtensions.getFirst(Resources);
 	}
 
+	@Override
 	public Resources getDefaultPlaceholder()
 	{
 		final List<Resources> Resources = find("default profile photo for default users",
@@ -97,6 +101,7 @@ public class ResourcesBusinessService
 		return ListExtensions.getFirst(Resources);
 	}
 
+	@Override
 	public Resources getManPlaceholder()
 	{
 		final List<Resources> Resources = find("default profile photo for male users",
@@ -104,6 +109,7 @@ public class ResourcesBusinessService
 		return ListExtensions.getFirst(Resources);
 	}
 
+	@Override
 	public Resources getWomanPlaceholder()
 	{
 		final List<Resources> Resources = find("default profile photo for female users",

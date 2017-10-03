@@ -27,7 +27,7 @@ package de.alpharogroup.resource.system.factories;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import de.alpharogroup.resource.system.entities.Resources;
 
