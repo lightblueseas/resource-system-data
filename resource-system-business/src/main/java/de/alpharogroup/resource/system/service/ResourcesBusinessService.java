@@ -33,17 +33,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.collections.list.ListExtensions;
-import de.alpharogroup.db.service.jpa.AbstractBusinessService;
-import de.alpharogroup.resource.system.daos.ResourcesDao;
+import de.alpharogroup.db.service.AbstractBusinessService;
 import de.alpharogroup.resource.system.entities.Resources;
+import de.alpharogroup.resource.system.repositories.ResourcesRepository;
 import de.alpharogroup.resource.system.service.api.ResourcesService;
 import de.alpharogroup.resource.system.service.util.HqlStringCreator;
 
+/**
+ * The service class {@link ResourcesBusinessService}.
+ */
 @Transactional
 @Service("resourcesService")
 public class ResourcesBusinessService
 	extends
-		AbstractBusinessService<Resources, Integer, ResourcesDao>
+		AbstractBusinessService<Resources, java.lang.Integer, ResourcesRepository>
 	implements
 		ResourcesService
 {
@@ -117,10 +120,14 @@ public class ResourcesBusinessService
 		return ListExtensions.getFirst(Resources);
 	}
 
+	/**
+	 * Sets the repository.
+	 *
+	 * @param repository the repository
+	 */
 	@Autowired
-	public void setResourcesDao(ResourcesDao ResourcesDao)
-	{
-		setDao(ResourcesDao);
+	public void setResourcesRepository(ResourcesRepository repository) {
+		setRepository(repository);
 	}
 
 }

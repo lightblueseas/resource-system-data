@@ -29,7 +29,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import de.alpharogroup.lang.object.CopyObjectExtensions;
+import de.alpharogroup.copy.object.CopyObjectExtensions;
 import de.alpharogroup.resource.system.application.model.ResourcesModel;
 import de.alpharogroup.resource.system.entities.Resources;
 
@@ -72,7 +72,7 @@ public class ModelConverter
 	 */
 	public static List<ResourcesModel> toResourcesModel(final List<Resources> resources)
 	{
-		final List<ResourcesModel> rml = new ArrayList<ResourcesModel>();
+		final List<ResourcesModel> rml = new ArrayList<>();
 		for (final Resources resource : resources)
 		{
 			rml.add(toResourcesModel(resource));

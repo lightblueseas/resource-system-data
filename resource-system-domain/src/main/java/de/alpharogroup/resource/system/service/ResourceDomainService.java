@@ -31,11 +31,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.alpharogroup.lang.object.CopyObjectExtensions;
-import de.alpharogroup.resource.system.daos.ResourcesDao;
+import de.alpharogroup.copy.object.CopyObjectExtensions;
 import de.alpharogroup.resource.system.domain.Resource;
 import de.alpharogroup.resource.system.entities.Resources;
 import de.alpharogroup.resource.system.mapper.ResourcesMapper;
+import de.alpharogroup.resource.system.repositories.ResourcesRepository;
 import de.alpharogroup.resource.system.service.api.ResourceService;
 import de.alpharogroup.resource.system.service.api.ResourcesService;
 import de.alpharogroup.service.domain.AbstractDomainService;
@@ -49,7 +49,7 @@ import lombok.Setter;
 @Service("resourceDomainService")
 public class ResourceDomainService
 	extends
-		AbstractDomainService<Integer, Resource, Resources, ResourcesDao, ResourcesMapper>
+		AbstractDomainService<Integer, Resource, Resources, ResourcesRepository, ResourcesMapper>
 	implements
 		ResourceService
 {
@@ -67,7 +67,7 @@ public class ResourceDomainService
 	public Resource create(final Resource domainObject)
 	{
 		final Resources resources = CopyObjectExtensions.copyQuietly(domainObject, new Resources());
-		domainObject.setId(getDao().save(resources));
+		domainObject.setId(getRepository().save(resources));
 		return domainObject;
 	}
 
@@ -153,21 +153,19 @@ public class ResourceDomainService
 	@Override
 	public Resource read(final Integer id)
 	{
-		final Resources resources = getDao().get(id);
+		final Resources resources = getRepository().get(id);
 		final Resource resource = CopyObjectExtensions.copyQuietly(resources, new Resource());
 		return resource;
 	}
 
 	/**
-	 * Sets the specific {@link ResourcesDao}.
+	 * Sets the specific repository.
 	 *
-	 * @param resourcesDao
-	 *            the new {@link ResourcesDao}.
+	 * @param repository the repository
 	 */
 	@Autowired
-	public void setResourcesDao(final ResourcesDao resourcesDao)
-	{
-		setDao(resourcesDao);
+	public void setResourcesRepository(ResourcesRepository repository) {
+		setRepository(repository);
 	}
 
 	/**
@@ -185,9 +183,9 @@ public class ResourceDomainService
 	@Override
 	public Resource update(final Resource domainObject)
 	{
-		Resources resources = getDao().get(domainObject.getId());
+		Resources resources = getRepository().get(domainObject.getId());
 		CopyObjectExtensions.copyQuietly(domainObject, resources);
-		resources = getDao().merge(resources);
+		resources = getRepository().merge(resources);
 		return domainObject;
 	}
 

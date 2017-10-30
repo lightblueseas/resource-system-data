@@ -15,7 +15,7 @@
 	<!-- Enable annotation configuration -->
 	<context:annotation-config />
 	
-	<context:component-scan base-package="de.alpharogroup.resource.system.daos" />
+	<context:component-scan base-package="de.alpharogroup.resource.system.repositories" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.entities" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.mapper" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.service.api" />

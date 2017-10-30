@@ -24,16 +24,27 @@
  */
 package de.alpharogroup.resource.system.daos;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.Test;
+
 import de.alpharogroup.resource.system.entities.Resources;
+import de.alpharogroup.resource.system.repositories.ResourcesRepository;
 
-@Repository("resourcesDao")
-public class ResourcesDao extends JpaEntityManagerDao<Resources, Integer>
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
+public class ResourcesRepositoryTest extends AbstractTestNGSpringContextTests
 {
-	/**
-	 * The serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+	@Autowired
+	private ResourcesRepository resourcesRepository;
+
+	@Test
+	public void testFindAll()
+	{
+		final List<Resources> all = resourcesRepository.findAll();
+		System.out.println(all);
+	}
+
 }

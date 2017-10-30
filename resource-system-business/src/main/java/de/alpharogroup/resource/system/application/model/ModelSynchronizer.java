@@ -26,11 +26,11 @@ package de.alpharogroup.resource.system.application.model;
 
 import java.io.File;
 
+import de.alpharogroup.copy.object.CopyObjectExtensions;
 import de.alpharogroup.date.ConvertDateExtensions;
 import de.alpharogroup.file.checksum.Algorithm;
 import de.alpharogroup.file.checksum.ChecksumExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
-import de.alpharogroup.lang.object.CopyObjectExtensions;
 import de.alpharogroup.resource.system.entities.Resources;
 import de.alpharogroup.resource.system.factories.ResourceSystemFactory;
 
